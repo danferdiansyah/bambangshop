@@ -89,5 +89,13 @@ This is the place for you to write reflections:
    *DashMap* digunakan untuk memastikan akses bersamaan (*thread-safe*) ke daftar *Subscriber*. Jika kita menggunakan *Singleton* biasa, kita perlu mengunci akses setiap kali read/write, yang dapat menghambat kinerja pada environment. *DashMap* sudah cukup baik untuk mengatasi kasus ini dengan *sharding*, sehingga tetap optimal. Jadi, tetap menggunakan *DashMap* bisa menjadi pilihan yang lebih baik dibandingkan *Singleton* biasa.
 
 #### Reflection Publisher-2
+1. **Mengapa Perlu Memisahkan Service dan Repository dalam MVC?**
+Pada struktur **Model-View-Controller (MVC)**, pemisahan Service dan Repository dari Model bertujuan untuk meningkatkan maintainability dan scalability dalam proses development. Model dalam MVC seharusnya tidak menangani semua aspek logika bisnis dan akses data secara langsung, karena dapat melanggar prinsip Single Responsibility Principle (SRP). Dengan adanya Service, logika bisnis dapat dipisahkan dari Model, sehingga perubahan aturan bisnis tidak berdampak langsung pada struktur data. Lebih lanjut, Repository berfungsi untuk mengelola akses ke database sehingga mempermudah penggantian teknologi penyimpanan data tanpa memengaruhi logika bisnis yang ada. 
+
+2. **Bagaimana Jika Hanya Menggunakan Model?**
+Jika hanya menggunakan Model tanpa pemisahan Service dan Repository, maka kode akan menjadi lebih kompleks dan sulit untuk dimaintain. Code juga akan jadi lebih sulit diuji dan diperbarui. Jika ada perubahan kecil misalnya format notifikasi, maka banyak bagian kode harus mengalami modifikasi.  Akibatnya, risiko terjadinya error lebih tinggi. Selain itu, *unit testing* juga jadi relatif lebih sulit. Dengan adanya Service Layer, tugas yang lebih spesifik dapat didelegasikan.
+
+3. **Helpful Postman tools**
+untuk menguji API, Postman menjadi tool yang cukup membantu. Postman biasa saya gunakan untuk menguji endpoint API, membantu debugging, serta menyimpan berbagai request dalam collections untuk memudahkan testing ulang. Selain itu, fitur automasi testing dengan pre-request dan test scripts juga berguna untuk memastikan API berfungsi sesuai harapan sebelum diintegrate ke main project. Postman juga bisa digunakan untuk simulasi autentikasi menggunakan JWT token atau API key. 
 
 #### Reflection Publisher-3
