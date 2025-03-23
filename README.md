@@ -74,6 +74,8 @@ You can install Postman via this website: https://www.postman.com/downloads/
 ## Your Reflections
 This is the place for you to write reflections:
 
+**Note**: Reflection saya tulis dalam bahasa indonesia karena telah menggunakan Bahasa dari modul pertama. Terima kasih.
+
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
