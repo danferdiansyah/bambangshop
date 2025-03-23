@@ -77,6 +77,14 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. **Apakah Perlu Interface dalam Observer Pattern?**  
+   Dalam Observer Pattern, penggunaan interface memudahkan fleksibilitas dalam menambahkan berbagai jenis observer tanpa mengubah codebase. Namun, dalam pada tutorial *BambangShop* sejauh ini, *Subscriber* hanya memiliki dua atribut (*url* dan *name*), tanpa variasi perilaku yang kompleks. Jika belum ada rencana menambahkan berbagai jenis *Subscriber* dengan perilaku berbeda, cukup menggunakan satu struct *Subscriber* tanpa interface.
+
+2. **Vec vs. DashMap untuk Menyimpan Subscriber**  
+   *Vec* cukup jika kita hanya membutuhkan daftar tanpa *fast search* atau *deletion* berdasarkan *url*. Namun, karena *url* harus unik, penggunaan *DashMap* lebih tepat karena memungkinkan *search*, *insert*, dan *deletion* Subscriber berdasarkan *url* lebih efisien. Selain itu, *DashMap* lebih aman untuk akses paralel dibandingkan *Vec*.
+
+3. **Apakah Perlu DashMap atau Bisa Gunakan Singleton?**  
+   *DashMap* digunakan untuk memastikan akses bersamaan (*thread-safe*) ke daftar *Subscriber*. Jika kita menggunakan *Singleton* biasa, kita perlu mengunci akses setiap kali read/write, yang dapat menghambat kinerja pada environment. *DashMap* sudah cukup baik untuk mengatasi kasus ini dengan *sharding*, sehingga tetap optimal. Jadi, tetap menggunakan *DashMap* bisa menjadi pilihan yang lebih baik dibandingkan *Singleton* biasa.
 
 #### Reflection Publisher-2
 
