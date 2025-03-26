@@ -99,3 +99,12 @@ Jika hanya menggunakan Model tanpa pemisahan Service dan Repository, maka kode a
 untuk menguji API, Postman menjadi tool yang cukup membantu. Postman biasa saya gunakan untuk menguji endpoint API, membantu debugging, serta menyimpan berbagai request dalam collections untuk memudahkan testing ulang. Selain itu, fitur automasi testing dengan pre-request dan test scripts juga berguna untuk memastikan API berfungsi sesuai harapan sebelum diintegrate ke main project. Postman juga bisa digunakan untuk simulasi autentikasi menggunakan JWT token atau API key. 
 
 #### Reflection Publisher-3
+
+1. **Apa observer pattern yang digunakan pada kasus tutorial ini?**
+Saya menggunakan Push model sebagai Observer Pattern dalam kasus tutorial ini, karena publisher secara aktif mengirimkan data ke subscriber menggunakan `HTTP POST request`.  
+
+2. **Apa advantage dan disadvantage kalau menggunakan model lain?**
+Jika menggunakan Pull *model instead of* push model, subscriber dapat mengontrol waktu dan frekuensi pembaruan serta hanya mengambil data saat punya *resource* yang cukup untuk memprosesnya. Selain itu, beban pada publisher bisa berkurang karena tidak perlu *maintain* status koneksi dengan subscriber, dan implementasinya akan lebih sederhana. Tapi metode ini juga memiliki kelemahan, misalnya meningkatnya *network traffic* akibat request yang tidak perlu, ada latency dalam pembaruan, serta logika subscriber yang lebih kompleks.  
+
+3. **Bagaimana jika tidak menggunakan multi-threading pada notification process?**
+Jika proses notication tidak menggunakan multi-threading, program harus menunggu setiap subscriber menerima notification sebelum melanjutkan ke subscriber berikutnya. Hal ini dapat memperlambat proses notification secara keseluruhan.
